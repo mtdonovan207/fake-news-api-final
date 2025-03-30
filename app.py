@@ -11,6 +11,10 @@ learn = load_learner("fake_news_classifier.pkl")
 class ArticleURL(BaseModel):
     url: str
 
+@app.get("/")
+def root():
+    return {"message": "API is working!"}
+
 @app.post("/predict")
 def predict_article(data: ArticleURL):
     try:
@@ -27,3 +31,4 @@ def predict_article(data: ArticleURL):
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
