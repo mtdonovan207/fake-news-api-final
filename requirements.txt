@@ -5,3 +5,4 @@ torch
 newspaper3k
 lxml_html_clean
 gdown
+python-multipart
