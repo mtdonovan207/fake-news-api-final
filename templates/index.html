@@ -8,30 +8,19 @@
   <h1>Fake News Detector</h1>
   <p>Paste the link to your article and click submit. The service will check if this is a fake news article or not.</p>
 
-  <form id="urlForm">
-    <input type="text" id="urlInput" name="url" placeholder="Enter article URL" size="60" required>
+  <form id="urlForm" method="post" action="/predict">
+    <input type="text" id="urlInput" name="url" placeholder="Enter article URL" size="60" required
+           value="{{ url if url else '' }}">
     <button type="submit">Submit</button>
   </form>
 
-  <p id="result"></p>
-
-  <script>
-    document.getElementById("urlForm").addEventListener("submit", async function(e) {
-      e.preventDefault();
-      const formData = new FormData();
-      formData.append("url", document.getElementById("urlInput").value);
-
-      const response = await fetch("/predict", {
-        method: "POST",
-        body: formData
-      });
-
-      const html = await response.text();
-      document.open();
-      document.write(html);
-      document.close();
-    });
-  </script>
+  {% if label %}
+    <h2>Prediction: {{ label }}</h2>
+    <p>Confidence: {{ confidence }}%</p>
+  {% elif error %}
+    <h2 style="color: red;">Error:</h2>
+    <p>{{ error }}</p>
+  {% endif %}
 </body>
 </html>
 
