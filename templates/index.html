@@ -7,46 +7,49 @@
   <meta name="Generator" content="Cocoa HTML Writer">
   <meta name="CocoaVersion" content="2575.2">
   <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Fake News Detector&lt;/title&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Fake News Detector&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Paste the link to your article and click submit. The service will check if this is a fake news article or not.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;form id="urlForm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" id="urlInput" placeholder="Enter article URL" size="60"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button type="submit"&gt;Submit&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/form&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p id="result"&gt;&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("urlForm").addEventListener("submit", async function(e) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>e.preventDefault();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const url = document.getElementById("urlInput").value;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>const response = await fetch("/predict", {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>method: "POST",</p>
-<p class="p1"><span class="Apple-converted-space">                </span>headers: { "Content-Type": "application/json" },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>body: JSON.stringify({ url })</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>const data = await response.json();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (response.ok) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById("result").innerText = `Prediction: ${data.label}`;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById("result").innerText = `Error: ${data.detail}`;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Fake News Detector&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Fake News Detector&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p&gt;Paste the link to your article and click submit. The service will check if this is a fake news article or not.&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;form id="urlForm"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;input type="text" id="urlInput" name="url" placeholder="Enter article URL" size="60" required&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button type="submit"&gt;Submit&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/form&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p id="result"&gt;&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById("urlForm").addEventListener("submit", async function(e) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>e.preventDefault();</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const formData = new FormData();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>formData.append("url", document.getElementById("urlInput").value);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const response = await fetch("/predict", {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>method: "POST",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>body: formData</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const html = await response.text();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.open();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.write(html);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.close();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
 </body>
 </html>
